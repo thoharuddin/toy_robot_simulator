@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <record id="view_toy_robot_simulator_form" model="ir.ui.view">
@@ -7,23 +7,29 @@
             <field name="arch" type="xml">
                 <form string="Toy Robot Simulator">
                     <sheet string="Toy Robot Simulator">
-                    <group name="content">
-                        <group>
-                            <field name="point_x"/>
-                            <field name="point_y"/>
-                            <field name="facing"/>
-
-                            <field name="table_x" invisible="1"/>
-                            <field name="table_y" invisible="1"/>
-                            <field name="report_x" invisible="1"/>
-                            <field name="report_y" invisible="1"/>
-                            <field name="report_f" invisible="1"/>
-
+                        <div name="button_box" class="oe_button_box" position="inside">
+                            <button class="oe_stat_button" type="object" name="move"
+                            icon="fa-caret-square-o-up" string="Move" widget="statinfo"/>
+                            <button class="oe_stat_button" type="object" name="left"
+                            icon="fa-caret-square-o-left " string="Left" widget="statinfo"/>
+                            <button class="oe_stat_button" type="object" name="right"
+                            icon="fa-caret-square-o-right " string="Right" widget="statinfo"/>
+                        </div>
+                        <group name="content">
+                            <group>
+                                <field name="point_x"/>
+                                <field name="point_y"/>
+                                <field name="facing"/>
+                            </group>
+                            <group>
+                                <field name="report_x" invisible="1"/>
+                                <field name="report_y" invisible="1"/>
+                                <field name="report_f" invisible="1"/>
+                                <field name="report"/>
+                            </group>
+                            <button class="oe_highlight" type="object" name="place_point"
+                                    icon="fa-mouse-pointer" string="Place"/>
                         </group>
-                        <group>
-                            <field name="report_x"/>
-                        </group>
-                    </group>
                     </sheet>
                 </form>
             </field>
@@ -34,16 +40,14 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">toy.robot.simulator</field>
             <field name="view_mode">form</field>
-            <field name="target">inline</field>
         </record>
-        
         <menuitem
-            id="menu_toy_robot_simulator"
-            name="Toy Robot Simulator"
-            parent="menu_game"
-            sequence="5"
-            action="action_toy_robot_simulator"
+            id="menu_game"
+            name="Game"
             groups="base.group_user"
+            parent="main_menu_game"
+            action="action_toy_robot_simulator"
+            sequence="5"
         />
     </data>
 </odoo>

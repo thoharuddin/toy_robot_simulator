@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <menuitem
-        id="main_menu_audit"
+        id="main_menu_game"
         name="Game"
         web_icon="game,static/iconnew.png"
         groups="base.group_user"
-    />
-    <menuitem
-        id="menu_game"
-        name="Game"
-        groups="base.group_user"
-        parent="main_menu_audit"
-        sequence="10"
     />
 </odoo>
