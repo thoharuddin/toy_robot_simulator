@@ -1,6 +1,7 @@
 Odoo - Toy Robot Simulator
 =======================
-We can play Toy Robot Simulator here (with no UI)
+We can play Toy Robot Simulator here (with Odoo 14.0)
+![alt text](https://github.com/thoharuddin/toy_robot_simulator/blob/main/game/static/description.png "Description")
 
 Description
 ========
@@ -34,6 +35,30 @@ Example b PLACE 0,0,NORTH - LEFT - REPORT
 
 Example c PLACE 1,2,EAST - MOVE - MOVE - LEFT - MOVE - REPORT
 > Expected output: 3,3,NORTH
+
+Unit Test
+========
+You can modified test code on game/test/test_game.py, here is an example of the test code :
+> def test_example_a(self):
+>         point = [0,0,"NORTH"]
+>         place = self.game.create({"point_x": point[0], "point_y": point[1],"facing": point[2]})
+>         place.place_point()
+>         place.move()
+>         self.assertEqual(place.report, "0, 1, NORTH")
+
+you can place the robot on point[] variable and move the robot using command move(), left() and right().
+to run the test you can just run odoo.bin like this :
+> python3 ../odoo-bin -c ../odoo-server.conf -d <database> -u <module> --test-enable --stop-after-init
+
+when warning/error occurs, the log will show you the details.
+> 2022-08-03 10:17:09,275 4085 ERROR game odoo.addons.game.tests.test_game: ERROR: TestGame.test_example_a
+> Traceback (most recent call last):
+>   File "/opt/odoo/custom/toy/game/tests/test_game.py", line 31, in test_example_a
+>     place.move()
+>   File "/opt/odoo/custom/toy/game/models/game.py", line 46, in move
+>     raise models.ValidationError(
+> odoo.exceptions.ValidationError: Your robot will Fall.
+
 
 Credits
 =======
