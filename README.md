@@ -36,7 +36,7 @@ Example b PLACE 0,0,NORTH - LEFT - REPORT
 Example c PLACE 1,2,EAST - MOVE - MOVE - LEFT - MOVE - REPORT
 > Expected output: 3,3,NORTH
 
-Unit Test
+Odoo Unit Test
 ========
 You can modified test code on game/test/test_game.py, here is an example of the test code :
 ```python
@@ -64,6 +64,23 @@ when warning/error occurs, the log will show you the details.
      raise models.ValidationError(
  odoo.exceptions.ValidationError: Your robot will Fall.
 ```
+
+Native Source Code (Python)
+========
+I've put 3 files there :
+```
+robot.py - handle robot mechanism
+input.py - run it if you want to add an input
+test.py - run it if you want to run the test
+```
+you can run it just by running command like,
+> python3 input.py
+
+and then place the input like this :
+> PLACE:1,2,EAST MOVE MOVE LEFT MOVE REPORT
+
+and the result should be :
+> 3, 3, NORTH
 
 Credits
 =======
